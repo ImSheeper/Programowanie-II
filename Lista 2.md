@@ -111,3 +111,34 @@ int main() {
     return 0;
 }
 ```
+
+# Zadanie 3
+```cpp
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    int n;
+
+    cout << "Podaj n: " << endl;
+    cin >> n;
+
+    for(int i = 1; i <= n; i++) {
+
+        for(int j = i; j <= n; j++) {
+            cout << " ";
+        }
+
+        for(int g = 1; g <= (2 * i - 1); g++) {
+            if(i == n && g % 2 == 1 || g == 1 || g == 2 * i - 1) cout << "*";
+            else cout << " ";
+        }
+
+        cout << endl;
+    }
+
+    return 0;
+}
+```

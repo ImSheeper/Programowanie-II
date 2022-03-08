@@ -143,6 +143,7 @@ int main()
 }
 ```
 
+# Zadanie 4 (Nie jest dobrze)
 ```c++
 #include <iostream>
 #include <string>

@@ -142,3 +142,53 @@ int main()
     return 0;
 }
 ```
+
+```c++
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+int main()
+{
+    string zdanie;
+    int all = 0, bezSpacji = 0, wyk = 0;
+    char znak;
+
+    cout << "Podaj zdanie: " << endl;
+    getline(cin, zdanie);
+
+    cout << "Podaj znak do wykluczenia: " << endl;
+    cin >> znak;
+
+    cout << "Zdanie: " << zdanie << endl;
+    for(int i = 0; i < zdanie.length(); i++) {
+
+        if(zdanie[i] >= 32 && zdanie[i] <= 126) all++;
+
+        if(zdanie[i] >= 33 && zdanie[i] <= 126) bezSpacji++;
+
+        if(zdanie[i] >= 32 && zdanie[i] <= 126 && znak != zdanie[i]) wyk++;
+    }
+
+    cout << endl << "Liczba liter: " << all << endl;
+    cout << "Liczba liter z pominieciem spacji: " << bezSpacji << endl;
+    cout << "Liczba liter z wykluczeniem znaku: " << wyk << endl;
+
+    string *arr;
+    arr = new string[zdanie.length()];
+
+    cout << endl << "Podaj znak do podzielenia zdania: " << endl;
+    cin >> znak;
+
+        for(int i = 0; i < zdanie.length(); i++) {
+
+        cout << zdanie[i];
+
+        if(zdanie[i] == znak) {
+            cout << endl;
+        }
+    }
+
+    return 0;
+}```

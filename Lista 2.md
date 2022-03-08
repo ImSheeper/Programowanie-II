@@ -7,7 +7,7 @@ using namespace std;
 int main()
 {
     int w;
-    float obj, pp;;
+    float obj, pp;
 
     cout << "1. Kula" << endl << "2. Prostopadloscian" << endl << "3. Stozek" << endl;
     cin >> w;

@@ -64,6 +64,7 @@ int main() {
 # Zadanie 3
 ```cpp
 #include <iostream>
+#include <time.h>
 
 using namespace std;
 
@@ -72,9 +73,9 @@ int main() {
     do {
 
         int size, suma = 0, suma2 = 0;
+        srand(time(NULL));
 
-        m:
-        cout << "Podaj rozmiar macierzy od 2-10: " << endl;
+        m:cout << "Podaj rozmiar macierzy od 2-10: " << endl;
         cin >> size;
 
         if (size > 10 || size < 2) {

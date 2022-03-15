@@ -36,7 +36,7 @@ int maksimum(int size, int *tab) {
         }
     }
 
-    cout << "Najmniejsza liczba wynosi: " << max << endl;
+    cout << "Najwieksza liczba wynosi: " << max << endl;
     return maxI;
 }
 

@@ -1,5 +1,51 @@
 # Zadanie 1
+```cpp
+#include <iostream>
 
+using namespace std;
+
+int wartosc(int odsetki, int suma, int kap) {
+
+    int iteracja = 0;
+
+    for(int i = odsetki; i < suma; i += odsetki) {
+        iteracja += kap;
+    }
+
+    return iteracja;
+}
+
+int main() {
+
+    double kwota, odsetki, oprocentowanie, kapitalizacja, suma, kap, funkcja;
+
+    cout << "Podaj kwote poczatkowa" << endl;
+    cin >> kwota;
+
+    cout << "Podaj oprocentowanie w skali roku" << endl;
+    cin >> oprocentowanie;
+
+    cout << "Podaj okres kapitalizacji" << endl;
+    cin >> kap;
+
+    cout << "Podaj oczekiwana kwote odsetek" << endl;
+    cin >> suma;
+
+    kapitalizacja = 12 / kap;
+
+    oprocentowanie /= kapitalizacja;
+
+    odsetki = (oprocentowanie * 0.01) * kwota;
+
+    cout << "Kwota bedzie wynosic: " << kwota + odsetki << endl;
+
+    funkcja = wartosc(odsetki, suma, kap);
+
+    cout << "Musisz poczekac: " << funkcja << " miesiecy" << endl;
+
+    return 0;
+}
+```
 # Zadanie 2
 ```cpp
 #include <iostream>

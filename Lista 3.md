@@ -1,62 +1,90 @@
 # Zadanie 1
 
-# Zadanie 2 (BRAK FUNKCJI)
+# Zadanie 2
 ```cpp
 #include <iostream>
 
 using namespace std;
 
-int minMax {
+int minimum(int size, int *tab) {
 
-};
+    int min = 0, minI = 0;
+
+    for(int i = 0; i < size; i++) {
+        if(i == 0) min = tab[i];
+
+        if(min > tab[i]) {
+            min = tab[i];
+            minI = i;
+        }
+    }
+
+    cout << "Najmniejsza liczba wynosi: " << min << endl;
+    return minI;
+}
+
+int maksimum(int size, int *tab) {
+
+    int max = 0, maxI = 0;
+
+    for(int i = 0; i < size; i++) {
+        if(i == 0) max = tab[i];
+
+        if(max< tab[i]) {
+            max = tab[i];
+            maxI = i;
+        }
+    }
+
+    cout << "Najmniejsza liczba wynosi: " << max << endl;
+    return maxI;
+}
+
+int srednia(int size, int *tab) {
+
+    int sr = 0;
+
+    for(int i = 0; i < size; i++) {
+        sr += tab[i];
+    }
+
+    return sr / size;
+}
+
+int znajdz(int wartosc, int *tab, int size) {
+
+    for(int i = 0; i < 15; i++) {
+        if(wartosc == tab[i]) wartosc = i;
+    }
+
+    return wartosc;
+}
 
 int main() {
 
-    int tab[15];
-
+    int tab[15], min, max, sr;
 
     cout << "Podaj 15 liczb (oddzielane enterem)" << endl;
     for(int i = 0; i < 15; i++) {
         cin >> tab[i];
     }
 
-    int min = 0, max = 0, srednia = 0, maxI, minI;
+    min = minimum(15, tab);
+    max = maksimum(15, tab);
+    sr = srednia(15, tab);
 
-    for(int i = 0; i < 15; i++) {
-        if(i == 0) {
-            min = tab[i];
-            max = tab[i];
-        }
+    cout << "Pozycja najmniejszej liczby to: " << min << endl;
+    cout << "Pozycja najwiekszej liczby to: " << max << endl;
+    cout << "Srednia wynosi: " << sr << endl;
 
-        if(min > tab[i]) {
-            min = tab[i];
-            minI = i;
-        }
-
-        if(max < tab[i]) {
-            max = tab[i];
-            maxI = i;
-        }
-
-        srednia += tab[i];
-    }
-
-    srednia /= 15;
-
-    cout << "Najwieksza liczba wynosi: " << max << " jej pozycja to: " << maxI << endl;
-    cout << "Najmniejsza liczba wynosi: " << min << " jej pozycja to: " << minI << endl;
-    cout << "Srednia tych liczb wynosi: " << srednia << endl;
-
-    int wartosc;
+    int wartosc, n;
 
     cout << "Podaj wartosc do znalezienia: " << endl;
     cin >> wartosc;
 
-    for(int i = 0; i < 15; i++) {
-        if(wartosc == tab[i]) wartosc = i;
-    }
+    n = znajdz(wartosc, tab, 15);
 
-    cout << "Pozycja wartosci wynosi: " << wartosc << endl;
+    cout << "Pozycja wartosci wynosi: " << n << endl;
 
     return 0;
 }

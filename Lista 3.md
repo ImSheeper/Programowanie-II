@@ -1,6 +1,6 @@
 # Zadanie 1
 
-# Zadanie 2
+# Zadanie 2 (BRAK FUNKCJI)
 ```cpp
 #include <iostream>
 

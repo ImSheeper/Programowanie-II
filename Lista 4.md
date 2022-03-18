@@ -65,24 +65,17 @@ int main() {
         cin >> vec[i];
     }
 
-    int minimum, maksimum, sr, poz, wynik;
+    int poz;
 
-    minimum = min(vec);
-    maksimum = max(vec);
+    cout << "Najmniejsza liczba jest: " << min(vec) << endl;
+    cout << "Najwieksza liczba jest: " << max(vec) << endl;
 
-    cout << "Najmniejsza liczba jest: " << minimum << endl;
-    cout << "Najwieksza liczba jest: " << maksimum << endl;
-
-    sr = srednia(vec);
-
-    cout << "Srednia liczb wynosi: " << sr << endl;
+    cout << "Srednia liczb wynosi: " << srednia(vec) << endl;
 
     cout << endl << "Podaj pozycje jaka zwrocic" << endl;
     cin >> poz;
 
-    wynik = pozycja(vec, poz);
-
-    cout << "Element na danej pozycji wynosi: " << wynik << endl;
+    cout << "Element na danej pozycji wynosi: " << pozycja(vec, poz) << endl;
 
     return 0;
 }

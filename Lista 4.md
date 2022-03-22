@@ -81,7 +81,7 @@ int main() {
 }
 ```
 
-# Zadanie 2 (MNOŻENIE NIE DZIAŁA)
+# Zadanie 2 (MNOŻENIE NIE DZIAŁA) - To trzeba rozdzielić na osobne pliki, powodzenia
 ```cpp
 #include <iostream>
 #include <vector>

@@ -81,7 +81,7 @@ int main() {
 }
 ```
 
-# Zadanie 2
+# Zadanie 2 (MNOŻENIE NIE DZIAŁA)
 ```cpp
 #include <iostream>
 #include <vector>

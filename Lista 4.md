@@ -9,8 +9,8 @@ int min(vector<int> vec) {
 
     int min;
 
+    min = vec[0];
     for(int i = 0; i < vec.size(); i++) {
-        if(i == 0) min = vec[i];
         if(min > vec[i]) min = vec[i];
     }
 
@@ -21,8 +21,8 @@ int max(vector<int> vec) {
 
     int max;
 
+    max = vec[0];
     for(int i = 0; i < vec.size(); i++) {
-        if(i == 0) max = vec[i];
         if(max < vec[i]) max = vec[i];
     }
 

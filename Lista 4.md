@@ -284,3 +284,233 @@ int main() {
     return 0;
 }
 ```
+# funkcje.h
+```cpp
+#pragma once
+#include <iostream>
+#include <string>
+
+void dodawanie();
+void odejmowanie();
+void mnozenie();
+```
+# fun.cpp
+```cpp
+#include <iostream>
+#include <vector>
+#include "funkcje.h"
+
+using namespace std;
+
+void dodawanie() {
+
+    vector<vector<int>> vec;
+    vector<vector<int>> vec2;
+
+    int n, temp;
+
+    cout << "Podaj wielkosc macierzy" << endl;
+    cin >> n;
+
+    vec.resize(n);
+    vec2.resize(n);
+
+    //Wprowadzanie liczb
+    cout << "Wprowadz liczby " << n << "x" << n << " pierwszej macierzy" << endl;
+    for(int i = 0; i < n; i++) {
+        for(int j = 0; j < n; j++) {
+            cin >> temp;
+            vec[i].push_back(temp);
+        }
+    }
+
+    cout << "Wprowadz liczby " << n << "x" << n << " drugiej macierzy" << endl;
+    for(int i = 0; i < n; i++) {
+        for(int j = 0; j < n; j++) {
+            cin >> temp;
+            vec2[i].push_back(temp);
+        }
+    }
+
+    //Wyswietlanie dodawania
+    cout << "Macierz 1:" << endl;
+    for(int i = 0; i < n; i++) {
+        for(int j = 0; j < n; j++) {
+            printf("%5d", vec[i][j]);
+        }
+        cout << endl;
+    }
+
+    cout << endl;
+    cout << "Macierz 2:" << endl;
+    for(int i = 0; i < n; i++) {
+        for(int j = 0; j < n; j++) {
+            printf("%5d", vec2[i][j]);
+        }
+        cout << endl;
+    }
+
+    cout << endl;
+    //Dodawanie
+    cout << "Wynik:" << endl;
+    for(int i = 0; i < n; i++) {
+        for(int j = 0; j < n; j++) {
+            printf("%5d", vec[i][j] + vec2[i][j]);
+        }
+        cout << endl;
+    }
+}
+
+void odejmowanie() {
+
+    vector<vector<int>> vec;
+    vector<vector<int>> vec2;
+
+    int n, temp;
+
+    cout << "Podaj wielkosc macierzy" << endl;
+    cin >> n;
+
+    vec.resize(n);
+    vec2.resize(n);
+
+    //Wprowadzanie liczb
+    cout << "Wprowadz liczby " << n << "x" << n << " pierwszej macierzy" << endl;
+    for(int i = 0; i < n; i++) {
+        for(int j = 0; j < n; j++) {
+            cin >> temp;
+            vec[i].push_back(temp);
+        }
+    }
+
+    cout << "Wprowadz liczby " << n << "x" << n << " drugiej macierzy" << endl;
+    for(int i = 0; i < n; i++) {
+        for(int j = 0; j < n; j++) {
+            cin >> temp;
+            vec2[i].push_back(temp);
+        }
+    }
+
+    //Wyswietlanie odejmowania
+    cout << "Macierz 1:" << endl;
+    for(int i = 0; i < n; i++) {
+        for(int j = 0; j < n; j++) {
+            printf("%5d", vec[i][j]);
+        }
+        cout << endl;
+    }
+
+    cout << endl;
+    cout << "Macierz 2:" << endl;
+    for(int i = 0; i < n; i++) {
+        for(int j = 0; j < n; j++) {
+            printf("%5d", vec2[i][j]);
+        }
+        cout << endl;
+    }
+
+    cout << endl;
+    //odejmowanie
+    cout << "Wynik:" << endl;
+    for(int i = 0; i < n; i++) {
+        for(int j = 0; j < n; j++) {
+            printf("%5d", vec[i][j] - vec2[i][j]);
+        }
+        cout << endl;
+    }
+}
+
+void mnozenie() {
+
+    vector<vector<int>> vec;
+    vector<vector<int>> vec2;
+
+    int n, temp;
+
+    cout << "Podaj wielkosc macierzy" << endl;
+    cin >> n;
+
+    vec.resize(n);
+    vec2.resize(n);
+
+    //Wprowadzanie liczb
+    cout << "Wprowadz liczby " << n << "x" << n << " pierwszej macierzy" << endl;
+    for(int i = 0; i < n; i++) {
+        for(int j = 0; j < n; j++) {
+            cin >> temp;
+            vec[i].push_back(temp);
+        }
+    }
+
+    cout << "Wprowadz liczby " << n << "x" << n << " drugiej macierzy" << endl;
+    for(int i = 0; i < n; i++) {
+        for(int j = 0; j < n; j++) {
+            cin >> temp;
+            vec2[i].push_back(temp);
+        }
+    }
+
+    //Wyswietlanie mnozenia
+    cout << "Macierz 1:" << endl;
+    for(int i = 0; i < n; i++) {
+        for(int j = 0; j < n; j++) {
+            printf("%5d", vec[i][j]);
+        }
+        cout << endl;
+    }
+
+    cout << endl;
+    cout << "Macierz 2:" << endl;
+    for(int i = 0; i < n; i++) {
+        for(int j = 0; j < n; j++) {
+            printf("%5d", vec2[i][j]);
+        }
+        cout << endl;
+    }
+
+    vector<vector<int>> suma(n);
+
+    cout << endl;
+    //mnozenie
+    cout << "Wynik:" << endl;
+    for(int i = 0; i < n; i++) {
+        for(int j = 0; j < n; j++) {
+            for(int k = 0; k < n; k++) {
+                suma[i][j] += vec[i][k] * vec2[k][j];
+            }
+            printf("%5d", suma[i][j]);
+        }
+        cout << endl;
+    }
+}
+```
+# main.cpp
+```cpp
+#include <iostream>
+#include <vector>
+#include "funkcje.h"
+#include "fun.cpp"
+
+using namespace std;
+
+int main() {
+
+    int n;
+
+    do {
+
+        cout << "Menu" << endl;
+        cout << "1.Dodawanie" << endl;
+        cout << "2.Odejmowanie" << endl;
+        cout << "3.Mnozenie" << endl;
+        cout << "4.Zakoncz" << endl;
+        cin >> n;
+
+        if (n == 1) dodawanie();
+        if (n == 2) odejmowanie();
+        if (n == 3) mnozenie();
+    }while(n != 4);
+
+    return 0;
+}
+```

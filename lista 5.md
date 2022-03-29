@@ -150,6 +150,7 @@ int main() {
 }
 ```
 # Bardziej zoptymalizowana wersja
+# funkcje.cpp
 ```cpp
 #include <iostream>
 #include <windows.h>
@@ -259,5 +260,113 @@ int sprawdzanie2() {
     if(l2 >= 3 || sr2 >= 3 || pr2 >= 3 || lprz2 >= 3 || pprz2 >= 3 || y02 >= 3 || y12 >= 3 || y22 >= 3) sprawdzanie2 = 1;
 
     return sprawdzanie2;
+}
+```
+header.h
+```cpp
+#ifndef HEADER_H_INCLUDED
+#define HEADER_H_INCLUDED
+
+
+
+#endif // HEADER_H_INCLUDED
+
+
+void budowanie();
+
+void rysowanie();
+
+void wpisywanie(int pole);
+
+void wpisywanie2(int pole);
+
+int sprawdzanie();
+
+int sprawdzanie2();
+```
+# main.cpp
+```cpp
+#include <iostream>
+#include <windows.h>
+#include <stdlib.h>
+#include "header.h"
+#include "funkcje.cpp"
+
+using namespace std;
+
+int main() {
+
+    int pole = 10, ruchy, sp, sp2, wyb;
+
+    m:cout << "Kolko i Krzyzyk" << endl;
+    cout << "1. Rozgrywka z druga osoba" << endl;
+    cout << "2. Rozgrywka z AI (NIEDOSTEPNE)" << endl;
+    cin >> wyb;
+
+    if(wyb == 1) {
+        ruchy = 0;
+        system("cls");
+        budowanie(); //budowanie planszy/resetowanie
+        rysowanie(); //rysowanie planszy
+
+        do {
+            cout << "Gracz 1 (x)" << endl;
+            cout << "Wybierz pole (X + Y)" << endl;
+            cin >> pole;
+            system("cls");
+            wpisywanie(pole);
+            sp = sprawdzanie();
+            ruchy++;
+
+            if(sp == 1 || ruchy == 9) break;
+
+            cout << "Gracz 2 (o)" << endl;
+            cout << "Wybierz pole (X + Y)" << endl;
+            cin >> pole;
+            system("cls");
+            wpisywanie2(pole);
+            sp2 = sprawdzanie2();
+            ruchy++;
+
+            if(sp2 == 1 || ruchy == 9) break;
+        }while(ruchy < 9);
+
+        if(sp == 1) cout << endl << "Koniec gry!" << endl << "Gracz 1 (x) wygral" << endl << endl;
+        else if(sp2 == 1) cout << endl << "Koniec gry!" << endl << "Gracz 2 (o) wygral" << endl << endl;
+        else cout << endl << "Koniec gry!" << endl << "Remis!" << endl << endl;
+
+        cout << "Zagrac jeszcze raz?" << endl;
+        cout << "1.Tak" << endl;
+        cout << "2.Nie" << endl;
+        cin >> wyb;
+        cout << endl;
+
+        if(wyb == 1) {
+            system("cls");
+            cout << "Wczytywanie..." << endl;
+            Sleep(1000);
+            system("cls");
+            goto m;
+        }
+        else return 0;
+    }
+
+    else if(wyb == 2) {
+        system("cls");
+        cout << "Ten tryb nie jest jeszcze gotowy!" << endl;
+        Sleep(2000);
+        system("cls");
+        goto m;
+    }
+
+    else {
+        system("cls");
+        cout << "Bledna wartosc!" << endl;
+        Sleep(2000);
+        system("cls");
+        goto m;
+    }
+
+    return 0;
 }
 ```

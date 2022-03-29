@@ -576,3 +576,253 @@ int main() {
     return 0;
 }
 ```
+# Wersja ostateczna (Bez wybierania wielkości planszy przez użytkownika)
+# funkcje.cpp
+```cpp
+#include <iostream>
+#include <windows.h>
+#include <stdlib.h>
+#include <time.h>
+#include "header.h"
+
+using namespace std;
+
+int tab[3][3], posx[3][3], posy[3][3];
+
+void budowanie() {
+
+    int iteracja = 0;
+
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 3; j++) {
+            tab[i][j] = iteracja;
+            posx[i][j] = iteracja;
+            posy[i][j] = iteracja;
+            iteracja++;
+        }
+    }
+}
+
+void rysowanie() {
+
+    int l = 0;
+
+    cout << "    0   1   2 -> X" << endl;
+
+    for(int i = 0; i < 3; i++) {
+        cout << l << " ";
+        l += 3;
+        for(int j = 0; j < 3; j++) {
+            cout << "|";
+            if(posx[i][j] == 10) printf(" x ");
+            else if(posy[i][j] == 20) printf(" o ");
+            else if(j < 3) cout << "___";
+            if(j == 2) cout << "|";
+        }
+        cout << endl;
+    }
+    cout << "Y |" << endl;
+}
+
+void wpisywanie(int pole) {
+
+    for(int i = 0; i < 3; i++) {
+        for(int j = 0; j < 3; j++) {
+            if(pole == tab[i][j]) {
+              tab[i][j] = 'X';
+              posx[i][j] = 10;
+            }
+        }
+    }
+    rysowanie();
+}
+
+void wpisywanie2(int pole) {
+
+    for(int i = 0; i < 3; i++) {
+        for(int j = 0; j < 3; j++) {
+            if(pole == tab[i][j]) {
+              tab[i][j] = 'O';
+              posy[i][j] = 20;
+            }
+        }
+    }
+    rysowanie();
+}
+
+int sprawdzanie() {
+
+        int sprawdzanie = 0;
+
+    for(int i = 0; i < 3; i++) {
+        if(tab[i][0] == tab[i][1] && tab[i][0] == tab[i][2] || tab[0][i] == tab[1][i] && tab[0][i] == tab[2][i]) { //proste sprawdzania
+            sprawdzanie = 1;
+            return sprawdzanie;
+        }
+        if(tab[0][0] == tab[1][1] && tab[0][0] == tab[2][2] || tab[0][2] == tab[1][1] && tab[0][2] == tab[2][0]) { //przekatne
+            sprawdzanie = 1;
+            return sprawdzanie;
+        }
+    }
+
+    return sprawdzanie; //jezeli nikt nie wygral to zwraca 0
+}
+
+void AI() {
+
+    srand(time(NULL));
+
+    int a;
+
+    a = rand() % 9;
+
+    cout << "AI (o) wybiera pole " << a << endl << endl;
+
+    wpisywanieAI(a);
+}
+
+void wpisywanieAI(int a) {
+
+    for(int i = 0; i < 3; i++) {
+        for(int j = 0; j < 3; j++) {
+            if(a == tab[i][j]) {
+              tab[i][j] = 'O';
+              posy[i][j] = 20;
+            }
+        }
+    }
+
+    rysowanie();
+}
+```
+# header.h
+```cpp
+#ifndef HEADER_H_INCLUDED
+#define HEADER_H_INCLUDED
+
+
+
+#endif // HEADER_H_INCLUDED
+
+
+void budowanie();
+
+void rysowanie();
+
+void wpisywanie(int pole);
+
+void wpisywanie2(int pole);
+
+int sprawdzanie();
+
+int sprawdzanie2();
+
+void AI();
+
+void wpisywanieAI(int a);
+```
+#main.cpp
+```cpp
+#include <iostream>
+#include <windows.h>
+#include <stdlib.h>
+#include "header.h"
+#include "funkcje.cpp"
+
+using namespace std;
+
+int main() {
+
+    int pole = 10, ruchy, sp, wyb;
+
+    m:cout << "Kolko i Krzyzyk" << endl;
+    cout << "1. Rozgrywka z druga osoba" << endl;
+    cout << "2. Rozgrywka z AI" << endl;
+    cin >> wyb;
+
+    if(wyb == 1) {
+        ruchy = 0;
+        system("cls");
+        budowanie(); //budowanie planszy/resetowanie
+        rysowanie(); //rysowanie planszy
+
+        do {
+            cout << "Gracz 1 (x)" << endl;
+            cout << "Wybierz pole (X + Y)" << endl;
+            cin >> pole;
+            system("cls");
+            wpisywanie(pole);
+            sp = sprawdzanie();
+            ruchy++;
+
+            if(sp == 1 || ruchy == 9) break;
+
+            cout << "Gracz 2 (o)" << endl;
+            cout << "Wybierz pole (X + Y)" << endl;
+            cin >> pole;
+            system("cls");
+            wpisywanie2(pole);
+            sp = sprawdzanie();
+            ruchy++;
+
+            if(sp == 1 || ruchy == 9) break;
+        }while(ruchy < 9);
+    }
+
+    else if(wyb == 2) {
+        ruchy = 0;
+        system("cls");
+        budowanie(); //budowanie planszy/resetowanie
+        rysowanie(); //rysowanie planszy
+
+        do {
+            cout << "Gracz 1 (x)" << endl;
+            cout << "Wybierz pole (X + Y)" << endl;
+            cin >> pole;
+            system("cls");
+            wpisywanie(pole);
+            sp = sprawdzanie();
+            ruchy++;
+
+            if(sp == 1 || ruchy == 9) break;
+
+            //AI
+            system("cls");
+            AI();
+            sp = sprawdzanie();
+            ruchy++;
+
+            if(sp == 1 || ruchy == 9) break;
+        }while(ruchy < 9);
+    }
+
+    else {
+        system("cls");
+        cout << "Bledna wartosc!" << endl;
+        Sleep(2000);
+        system("cls");
+        goto m;
+    }
+
+    if(sp == 1 && ruchy % 2 == 1) cout << endl << "Koniec gry!" << endl << "Gracz 1 (x) wygral" << endl << endl;
+        else if(sp == 1 && ruchy % 2 == 0) cout << endl << "Koniec gry!" << endl << "Gracz 2 (o) wygral" << endl << endl;
+        else cout << endl << "Koniec gry!" << endl << "Remis!" << endl << endl;
+
+        cout << "Zagrac jeszcze raz?" << endl;
+        cout << "1.Tak" << endl;
+        cout << "2.Nie" << endl;
+        cin >> wyb;
+        cout << endl;
+
+        if(wyb == 1) {
+            system("cls");
+            cout << "Wczytywanie..." << endl;
+            Sleep(1000);
+            system("cls");
+            goto m;
+        }
+        else return 0;
+
+    return 0;
+}
+```

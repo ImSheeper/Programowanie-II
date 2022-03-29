@@ -468,7 +468,7 @@ int sprawdzanie() {
 }
 ```
 # header.h
-```
+```cpp
 #ifndef HEADER_H_INCLUDED
 #define HEADER_H_INCLUDED
 
@@ -490,7 +490,7 @@ int sprawdzanie();
 int sprawdzanie2();
 ```
 # main.cpp
-```
+```cpp
 #include <iostream>
 #include <windows.h>
 #include <stdlib.h>

@@ -1,3 +1,4 @@
+# Wybierzcie sobie jakąś wersję. Jak dobrze pamiętam, to wszystkie działają
 # Pierwsza wersja
 ```cpp
 #include <iostream>

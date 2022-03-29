@@ -263,7 +263,7 @@ int sprawdzanie2() {
     return sprawdzanie2;
 }
 ```
-header.h
+# header.h
 ```cpp
 #ifndef HEADER_H_INCLUDED
 #define HEADER_H_INCLUDED

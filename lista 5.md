@@ -502,7 +502,7 @@ using namespace std;
 
 int main() {
 
-    int pole = 10, ruchy, sp, sp2, wyb;
+    int pole = 10, ruchy, sp, wyb;
 
     m:cout << "Kolko i Krzyzyk" << endl;
     cout << "1. Rozgrywka z druga osoba" << endl;

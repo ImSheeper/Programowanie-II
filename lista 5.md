@@ -861,17 +861,11 @@ void rysowanie();
 
 void wpisywanie();
 
-void wpisywanie2();
-
 int sprawdzanie();
-
-int sprawdzanie2();
 
 void AI();
 
 void wpisywanieZAI();
-
-
 ```
 
 # funkcje.cpp

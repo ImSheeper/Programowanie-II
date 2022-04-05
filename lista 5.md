@@ -589,6 +589,7 @@ using namespace std;
 
 int tab[3][3], posx[3][3], posy[3][3];
 
+//budowanie resetuje plansze do wartosci domyslnych z kazdym restartem gry
 void budowanie() {
 
     int iteracja = 0;
@@ -655,28 +656,47 @@ int sprawdzanie() {
         int sprawdzanie = 0;
 
     for(int i = 0; i < 3; i++) {
-        if(tab[i][0] == tab[i][1] && tab[i][0] == tab[i][2] || tab[0][i] == tab[1][i] && tab[0][i] == tab[2][i]) { //proste sprawdzania
+        //sprawdzanie bokow
+        if(tab[i][0] == tab[i][1] && tab[i][0] == tab[i][2] || tab[0][i] == tab[1][i] && tab[0][i] == tab[2][i]) {
             sprawdzanie = 1;
             return sprawdzanie;
         }
-        if(tab[0][0] == tab[1][1] && tab[0][0] == tab[2][2] || tab[0][2] == tab[1][1] && tab[0][2] == tab[2][0]) { //przekatne
+
+        //sprawdzanie przekatnych
+        if(tab[0][0] == tab[1][1] && tab[0][0] == tab[2][2] || tab[0][2] == tab[1][1] && tab[0][2] == tab[2][0]) {
             sprawdzanie = 1;
             return sprawdzanie;
         }
     }
 
-    return sprawdzanie; //jezeli nikt nie wygral to zwraca 0
+    for(int i = 0; i < 3; i++) {
+        for(int j = 0; j < 3; j++) {
+            if(tab[i][j] != 'X' && tab[i][j] != 'O') sprawdzanie = 0;
+        }
+    }
+
+    return sprawdzanie;
 }
 
 void AI() {
 
     srand(time(NULL));
 
-    int a;
+    int a, pos = 0;
 
-    a = rand() % 9;
-
-    cout << "AI (o) wybiera pole " << a << endl << endl;
+    for(int i = 0; i < 3; i++) {
+        for(int j = 0; j < 3; j++) {
+            if(pos != 1) {
+                if(posx[i][j] != 10 && posy[i][j] != 20) {
+                    a = rand() % 2;
+                    if(a == 1) {
+                        posy[i][j] = 20;
+                        pos++;
+                    }
+                }
+            }
+        }
+    }
 
     wpisywanieAI(a);
 }
@@ -685,15 +705,15 @@ void wpisywanieAI(int a) {
 
     for(int i = 0; i < 3; i++) {
         for(int j = 0; j < 3; j++) {
-            if(a == tab[i][j]) {
+            if(posy[i][j] == 20) {
               tab[i][j] = 'O';
-              posy[i][j] = 20;
             }
         }
     }
 
     rysowanie();
 }
+
 ```
 # header.h
 ```cpp

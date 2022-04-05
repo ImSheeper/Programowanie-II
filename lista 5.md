@@ -869,8 +869,6 @@ int sprawdzanie2();
 
 void AI();
 
-void wpisywanieAI(int a);
-
 void wpisywanieZAI();
 
 ```

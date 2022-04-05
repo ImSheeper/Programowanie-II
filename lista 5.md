@@ -686,13 +686,11 @@ void AI() {
 
     for(int i = 0; i < 3; i++) {
         for(int j = 0; j < 3; j++) {
-            if(pos != 1) {
-                if(posx[i][j] != 10 && posy[i][j] != 20) {
-                    a = rand() % 2;
+            if(pos != 1 && posx[i][j] != 10 && posy[i][j] != 20) {
+                a = rand() % 2;
                     if(a == 1) {
                         posy[i][j] = 20;
                         pos++;
-                    }
                 }
             }
         }
@@ -713,7 +711,6 @@ void wpisywanieAI(int a) {
 
     rysowanie();
 }
-
 ```
 # header.h
 ```cpp

@@ -871,6 +871,7 @@ void AI();
 
 void wpisywanieZAI();
 
+
 ```
 
 # funkcje.cpp
@@ -1013,6 +1014,7 @@ void AI() {
 
     rysowanie();
 }
+
 ```
 # main.cpp
 ```cpp

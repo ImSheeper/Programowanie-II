@@ -625,7 +625,14 @@ void rysowanie() {
     cout << "Y |" << endl;
 }
 
-void wpisywanie(int pole) {
+void wpisywanie() {
+
+    int pole;
+
+    cout << "Gracz 1 (x)" << endl;
+    cout << "Wybierz pole (X + Y)" << endl;
+    cin >> pole;
+    system("cls");
 
     for(int i = 0; i < 3; i++) {
         for(int j = 0; j < 3; j++) {
@@ -635,10 +642,18 @@ void wpisywanie(int pole) {
             }
         }
     }
+
     rysowanie();
 }
 
-void wpisywanie2(int pole) {
+void wpisywanie2() {
+
+    int pole;
+
+    cout << "Gracz 2 (o)" << endl;
+    cout << "Wybierz pole (X + Y)" << endl;
+    cin >> pole;
+    system("cls");
 
     for(int i = 0; i < 3; i++) {
         for(int j = 0; j < 3; j++) {
@@ -744,7 +759,6 @@ void wpisywanieAI(int a);
 #include <windows.h>
 #include <stdlib.h>
 #include "header.h"
-#include "funkcje.cpp"
 
 using namespace std;
 
@@ -752,56 +766,43 @@ int main() {
 
     int pole = 10, ruchy, sp, wyb;
 
-    m:cout << "Kolko i Krzyzyk" << endl;
+m:cout << "Kolko i Krzyzyk" << endl;
     cout << "1. Rozgrywka z druga osoba" << endl;
     cout << "2. Rozgrywka z AI" << endl;
     cin >> wyb;
 
-    if(wyb == 1) {
+    if (wyb == 1) {
         ruchy = 0;
         system("cls");
         budowanie(); //budowanie planszy/resetowanie
         rysowanie(); //rysowanie planszy
 
         do {
-            cout << "Gracz 1 (x)" << endl;
-            cout << "Wybierz pole (X + Y)" << endl;
-            cin >> pole;
-            system("cls");
-            wpisywanie(pole);
+            wpisywanie();
             sp = sprawdzanie();
             ruchy++;
+            if (sp == 1 || ruchy == 9) break;
 
-            if(sp == 1 || ruchy == 9) break;
-
-            cout << "Gracz 2 (o)" << endl;
-            cout << "Wybierz pole (X + Y)" << endl;
-            cin >> pole;
-            system("cls");
-            wpisywanie2(pole);
+            wpisywanie2();
             sp = sprawdzanie();
             ruchy++;
+            if (sp == 1 || ruchy == 9) break;
 
-            if(sp == 1 || ruchy == 9) break;
-        }while(ruchy < 9);
+        } while (ruchy < 9);
     }
 
-    else if(wyb == 2) {
+    else if (wyb == 2) {
         ruchy = 0;
         system("cls");
-        budowanie(); //budowanie planszy/resetowanie
-        rysowanie(); //rysowanie planszy
+        budowanie();
+        rysowanie();
 
         do {
-            cout << "Gracz 1 (x)" << endl;
-            cout << "Wybierz pole (X + Y)" << endl;
-            cin >> pole;
-            system("cls");
-            wpisywanie(pole);
+            wpisywanie();
             sp = sprawdzanie();
             ruchy++;
 
-            if(sp == 1 || ruchy == 9) break;
+            if (sp == 1 || ruchy == 9) break;
 
             //AI
             system("cls");
@@ -809,8 +810,8 @@ int main() {
             sp = sprawdzanie();
             ruchy++;
 
-            if(sp == 1 || ruchy == 9) break;
-        }while(ruchy < 9);
+            if (sp == 1 || ruchy == 9) break;
+        } while (ruchy < 9);
     }
 
     else {
@@ -821,24 +822,24 @@ int main() {
         goto m;
     }
 
-    if(sp == 1 && ruchy % 2 == 1) cout << endl << "Koniec gry!" << endl << "Gracz 1 (x) wygral" << endl << endl;
-        else if(sp == 1 && ruchy % 2 == 0) cout << endl << "Koniec gry!" << endl << "Gracz 2 (o) wygral" << endl << endl;
-        else cout << endl << "Koniec gry!" << endl << "Remis!" << endl << endl;
+    if (sp == 1 && ruchy % 2 == 1) cout << endl << "Koniec gry!" << endl << "Gracz 1 (x) wygral" << endl << endl;
+    else if (sp == 1 && ruchy % 2 == 0) cout << endl << "Koniec gry!" << endl << "Gracz 2 (o) wygral" << endl << endl;
+    else cout << endl << "Koniec gry!" << endl << "Remis!" << endl << endl;
 
-        cout << "Zagrac jeszcze raz?" << endl;
-        cout << "1.Tak" << endl;
-        cout << "2.Nie" << endl;
-        cin >> wyb;
-        cout << endl;
+    cout << "Zagrac jeszcze raz?" << endl;
+    cout << "1.Tak" << endl;
+    cout << "2.Nie" << endl;
+    cin >> wyb;
+    cout << endl;
 
-        if(wyb == 1) {
-            system("cls");
-            cout << "Wczytywanie..." << endl;
-            Sleep(1000);
-            system("cls");
-            goto m;
-        }
-        else return 0;
+    if (wyb == 1) {
+        system("cls");
+        cout << "Wczytywanie..." << endl;
+        Sleep(1000);
+        system("cls");
+        goto m;
+    }
+    else return 0;
 
     return 0;
 }

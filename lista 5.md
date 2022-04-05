@@ -1304,8 +1304,8 @@ void AI() {
     rysowanie();
 }
 ```
-#main.cpp
-```
+# main.cpp
+```cpp
 #include <iostream>
 #include <windows.h>
 #include <stdlib.h>

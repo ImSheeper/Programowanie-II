@@ -1,34 +1,45 @@
+# To trochę podjeżdża też pod listę 7
 # Pola.h
 ```cpp
 #include <string>
-#include "Bank.h"
-#include "Pionek.h"
+#include "bank.h"
+#include "pionek.h"
 
 using namespace std;
 
-class Miasto {
+class info {
 
 private:
 	int cena;
-	int domki;
+	int idWlasciciela;
+	string nazwa;
 	int czynsz;
+	friend class Bank;
+};
+
+class Miasto : info {
+
+private:
+	int domki;
+	int cenaD;
+	int iloscD;
 
 public:
 	void pobierzWlasciciela(); //po zakupie przypisuje wlasciciela do danego pola
-	void pobierzCzynsz();
+	void ustawWlasciciela(pionek p);
+	void ustawDomek();
+	void pobierzCzynsz(pionek p);
 	void pobierzCeneDomku();
 };
 
-class Wodociagi {
+class Wodociagi : info {
 
 private:
-	int cena;
-	int czynsz;
+	int iloscPol;
 
 public:
-	void pobierzWlasciciela();
-	void ulepszenia();
-	void pobierzCzynsz();
+	void pobierzMnoznik(); //mnoznik z jakim pobiera pieniadze
+	void pobierzPieniadze(); //pobiera pieniadze uzywajac mnoznika
 };
 
 class Szansa {
